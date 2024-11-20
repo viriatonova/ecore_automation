@@ -6,15 +6,18 @@ SHELL := /bin/bash
 help:
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-
-.PHONY: setup
-setup:
+.PHONY: setup 
+setup: ## Install project dependencies
 	python -m pip install requirements.txt
 
-.PHONY: compile
-compile:
+.PHONY: compile 
+compile: ## Compile project dependencies
 	pip-compile --strip-extras --extra dev -o requirements.txt pyproject.toml
 
-.PHONY: update
-update:
+.PHONY: update 
+update: ## Update project dependencies
 	pip-sync requirements.txt
+
+.PHONY: lint 
+lint: ## Lint project
+	ruff check . --fix

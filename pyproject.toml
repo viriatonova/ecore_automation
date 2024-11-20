@@ -4,7 +4,7 @@ version = "0.0.1"
 requires-python = ">=3.13"
 dependencies = [
     "playwright==1.48.0",
-    "pytest-playwright==0.5.2"
+    "pytest-playwright==0.5.2",
 ]
 
 [project.optional-dependencies]
@@ -13,6 +13,29 @@ dev = [
     "ruff==0.7.4",
     "mypy==1.13.0",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",              
+    "--maxfail=2",  # stop after 2 failures   
+    # "--headed", # open browser durring tests 
+    # "-v",           # verbose output      
+]
+markers = [
+    "e2e: end-to-end tests"
+]
+
+[tools.playwright]
+headless = true
+browser = "chromium"
+viewport = { width = 1920, height = 1080 }
+screenshot = "only-on-failure"
+video = "retain-on-failure"
+trace = "retain-on-failure"
 
 [tool.ruff]
 line-length = 88

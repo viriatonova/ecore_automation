@@ -2,6 +2,7 @@
 E2E automation poc
 
 ## Usage
+1. CLI commands help : `make`
 
 ### Managing dependencies
 1. Install project dependencies: `make setup`
