@@ -11,4 +11,4 @@ E2E automation poc
 
 ### Running the project
 1. Install playwright dependencies: `playwright install`
-4. Running the tests:  `pytest`
+2. Running end-to-end tests: `make e2e`

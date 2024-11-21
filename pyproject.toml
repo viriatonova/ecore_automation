@@ -26,7 +26,8 @@ addopts = [
     # "-v",           # verbose output      
 ]
 markers = [
-    "e2e: end-to-end tests"
+    "e2e: end-to-end tests",
+    "only: run specific tests"
 ]
 
 [tools.playwright]

@@ -22,6 +22,14 @@ update: ## Update project dependencies
 lint: ## Lint project
 	ruff check . --fix
 
-.PHONY: test 
-test: ## Run tests in development
+.PHONY: test
+test: ## Run tests with debug
 	PWDEBUG=1 pytest -s
+
+.PHONY: only
+only: ## Run tests marked only
+	pytest -m only
+
+.PHONY: e2e
+e2e: ## Run end-to-end tests
+	pytest -m e2e
