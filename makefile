@@ -21,3 +21,7 @@ update: ## Update project dependencies
 .PHONY: lint 
 lint: ## Lint project
 	ruff check . --fix
+
+.PHONY: test 
+test: ## Run tests in development
+	PWDEBUG=1 pytest -s
